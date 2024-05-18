@@ -125,3 +125,120 @@
             });
         }
     }
+
+    /*package com.opencv.camara.opencvcamara;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.*;
+
+import org.opencv.core.*;
+import org.opencv.core.Point;
+import org.opencv.imgcodecs.Imgcodecs;
+import org.opencv.imgproc.Imgproc;
+import org.opencv.objdetect.CascadeClassifier;
+import org.opencv.objdetect.Objdetect;
+import org.opencv.videoio.VideoCapture;
+
+public class Camara extends JFrame {
+    //camara  screen
+    private JLabel camaraScreen;
+    private JButton btnCapture;
+    private VideoCapture capture;
+    private Mat image;
+
+    private boolean clicked = false;
+
+
+    public Camara(){
+
+        //desing ui
+        setLayout(null);
+
+        //agregando el boton
+        camaraScreen = new JLabel();
+        camaraScreen.setBounds(0,0, 650, 480);
+        add(camaraScreen);
+
+        //agregando cuerpo del boton
+        btnCapture = new JButton("capture");
+        btnCapture.setBounds(300, 480,80, 40);
+        add(btnCapture);
+
+        //acción del boton
+        btnCapture.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                clicked = true;
+            }
+        });
+
+        //dimensiones de la camara
+        setSize(new Dimension(640,560));
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+
+    }
+
+    //create camara
+    public void StartCamara(){
+        capture = new VideoCapture(0);
+        image  = new Mat();
+        byte[] imageData;
+        ImageIcon icon;
+
+        // si es verdad capture lee imagen
+        while(true){
+
+            //lee image a matrix
+            capture.read(image);
+
+            //convert matrix to byte
+            final MatOfByte buf = new MatOfByte();
+            Imgcodecs.imencode(".jpg", image,buf);
+
+            imageData = buf.toArray();
+            //agregar a JLabel
+            icon = new ImageIcon(imageData);
+            camaraScreen.setIcon(icon);
+
+            //captura y guardar el documento
+            if(clicked){
+                //solicitar ingresar el nombre de la imagen
+                String name = JOptionPane.showInputDialog("Enter image name");
+                if(name == null){
+                    name = new SimpleDateFormat("yyyy-mm-dd-hh-mm-ss").format(new Date());
+                }
+
+                //escribir en el archivo
+                Imgcodecs.imwrite("images/" + name + ".jpg", image);
+                clicked = false;
+            }
+        }
+
+
+
+    }
+
+    public static void main(String[] args){
+        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+        EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                Camara camara = new Camara();
+
+                //start camara in thread
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        camara.StartCamara();
+
+                    }
+                }).start();
+            }
+        });
+    }
+}*/
